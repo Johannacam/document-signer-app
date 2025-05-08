@@ -275,9 +275,9 @@ export default function HistorialFirmas() {
                             )}
                             
                             <div className="flex flex-col items-center">
-                                <h4 className="font-medium text-gray-700 mb-2">Firma Digital (QR):</h4>
+                                <h4 className="font-medium text-gray-700 mb-2">Hash del Documento (QR):</h4>
                                 <img 
-                                    src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(selectedSignature.signature)}&size=150x150`} 
+                                     src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(selectedSignature.fileHash)}&size=200x200`} 
                                     alt="Código QR de la firma" 
                                     className="border p-1 rounded bg-white"
                                 />

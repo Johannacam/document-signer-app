@@ -571,16 +571,16 @@ export default function DocumentSigner() {
                     </div>
                     
                     <div className="flex flex-col items-center mb-4">
-                        <h4 className="font-medium text-gray-700 mb-2">Firma Digital (QR):</h4>
+                        <h4 className="font-medium text-gray-700 mb-2" >Hash del Documento (QR):</h4>
                         <img 
-                            src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(selectedSignature.signature)}&size=200x200`} 
-                            alt="Código QR de la firma" 
+                            src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(selectedSignature.fileHash)}&size=200x200`} 
+                            alt="Código QR del Hash del Documento" 
                             className="border p-2 rounded-lg bg-white"
                         />
                     </div>
                     
                     <div className="mb-4">
-                        <h4 className="font-medium text-gray-700 mb-1">Hash de firma:</h4>
+                        <h4 className="font-medium text-gray-700 mb-1">Firma Digital:</h4>
                         <div className="text-xs bg-gray-100 p-3 rounded-lg overflow-auto max-h-24">
                             <code className="break-all">{selectedSignature.signature}</code>
                         </div>
