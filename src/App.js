@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '@/context/AuthContext';
+import DIFLogin from '@/components/Auth/DIFLogin';
+import Dashboard from '@/components/Admin/Dashboard';
+import DocumentSigner from '@/components/DocumentSigner';
+import HistorialFirmas from '@/components/Admin/HistorialFirmas';
+import RouteGuard from '@/components/Auth/RouteGuard';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<DIFLogin />} />
+          
+          <Route path="/" element={
+            <RouteGuard>
+              <Dashboard />
+            </RouteGuard>
+          } />
+          
+          <Route path="/firmar" element={
+            <RouteGuard>
+              <DocumentSigner />
+            </RouteGuard>
+          } />
+          
+          <Route path="/historial" element={
+            <RouteGuard>
+              <HistorialFirmas />
+            </RouteGuard>
+          } />
+        </Routes>
+      </AuthProvider>
+    </Router>
   );
 }
-
-export default App;
