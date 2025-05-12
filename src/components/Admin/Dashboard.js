@@ -1,7 +1,7 @@
 import { useAuth } from '@/context/AuthContext';
 import Button from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileSignature, History } from 'lucide-react';
+import { FileSignature, History, BookOpen } from 'lucide-react';
 
 export default function Dashboard() {
   const { usuario, logout } = useAuth();
@@ -26,22 +26,36 @@ export default function Dashboard() {
         <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Panel de Control</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Botones superiores */}
             <Button 
               onClick={() => navigate('/firmar')} 
               className="h-32 flex flex-col items-center justify-center gap-3 hover:bg-blue-50 transition-colors"
             >
               <FileSignature size={36} className="text-blue-600" />
               <span className="text-lg font-medium">Firmar Documento</span>
-              <span className="text-sm text-gray-500">Sube y firma nuevos documentos</span>
+              <span className="text-sm text-gray-500">Agrega documentos nuevos</span>
             </Button>
+            
             <Button 
               onClick={() => navigate('/historial')} 
               className="h-32 flex flex-col items-center justify-center gap-3 hover:bg-blue-50 transition-colors"
             >
               <History size={36} className="text-blue-600" />
               <span className="text-lg font-medium">Historial</span>
-              <span className="text-sm text-gray-500">Consulta documentos firmados</span>
+              <span className="text-sm text-gray-500">Busca documentos firmados</span>
             </Button>
+
+            {/* Botón manual centrado debajo */}
+            <div className="col-span-2 flex justify-center mt-4">
+              <Button 
+                onClick={() => navigate('/manual')} 
+                className="h-32 w-full md:w-1/2 flex flex-col items-center justify-center gap-3 hover:bg-blue-50 transition-colors"
+              >
+                <BookOpen size={36} className="text-blue-600" />
+                <span className="text-lg font-medium">Manual de Usuario</span>
+                <span className="text-sm text-gray-500">Guía completa de uso</span>
+              </Button>
+            </div>
           </div>
         </div>
       </main>
