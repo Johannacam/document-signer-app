@@ -2,9 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
 import DIFLogin from '@/components/Auth/DIFLogin';
 import Dashboard from '@/components/Admin/Dashboard';
-import DocumentSigner from '@/components/DocumentSigner';
+import DocumentSigner from '@/components/Admin/DocumentSigner';
 import HistorialFirmas from '@/components/Admin/HistorialFirmas';
 import RouteGuard from '@/components/Auth/RouteGuard';
+import Manual from '@/components/Admin/Manual';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
               <HistorialFirmas />
             </RouteGuard>
           } />
+          <Route path="/manual" element={<Manual />} />
         </Routes>
       </AuthProvider>
     </Router>
